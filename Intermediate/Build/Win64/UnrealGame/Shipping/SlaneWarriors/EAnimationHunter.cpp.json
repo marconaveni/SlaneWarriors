@@ -1,0 +1,13 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\unrealprojects\\slanewarriors\\source\\slanewarriors\\private\\eanimationhunter.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\unrealprojects\\slanewarriors\\intermediate\\build\\win64\\slanewarriors\\shipping\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "c:\\unrealprojects\\slanewarriors\\intermediate\\build\\win64\\unrealgame\\shipping\\slanewarriors\\definitions.slanewarriors.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

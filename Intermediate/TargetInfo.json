@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "SlaneWarriors",
+			"Path": "C:\\UnrealProjects\\SlaneWarriors\\Source\\SlaneWarriors.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "SlaneWarriorsEditor",
+			"Path": "C:\\UnrealProjects\\SlaneWarriors\\Source\\SlaneWarriorsEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

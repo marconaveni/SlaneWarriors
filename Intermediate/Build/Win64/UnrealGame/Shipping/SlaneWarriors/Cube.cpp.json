@@ -1,0 +1,17 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\unrealprojects\\slanewarriors\\source\\slanewarriors\\private\\cube.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\unrealprojects\\slanewarriors\\intermediate\\build\\win64\\slanewarriors\\shipping\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "c:\\unrealprojects\\slanewarriors\\intermediate\\build\\win64\\unrealgame\\shipping\\slanewarriors\\definitions.slanewarriors.h",
+            "c:\\unrealprojects\\slanewarriors\\source\\slanewarriors\\public\\cube.h",
+            "c:\\unrealprojects\\slanewarriors\\intermediate\\build\\win64\\unrealgame\\inc\\slanewarriors\\cube.generated.h",
+            "c:\\unrealprojects\\slanewarriors\\source\\slanewarriors\\public\\slanefunctionlibrary.h",
+            "c:\\unrealprojects\\slanewarriors\\intermediate\\build\\win64\\unrealgame\\inc\\slanewarriors\\slanefunctionlibrary.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

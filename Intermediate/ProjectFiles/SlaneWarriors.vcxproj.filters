@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\SlaneWarriors.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\SlaneWarriors.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\SlaneWarriorsEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Config\HoloLens">
+      <UniqueIdentifier>{4C8DD267-CDE7-336F-8602-F5F485D22BAB}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\HoloLens\HoloLensEngine.ini">
+      <Filter>Config\HoloLens</Filter>
+    </None>
+    <Filter Include="Source\SlaneWarriors">
+      <UniqueIdentifier>{513B3F4B-B3E5-357E-B7BD-B4A3FCB1C8D7}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\SlaneWarriors\SlaneWarriors.Build.cs">
+      <Filter>Source\SlaneWarriors</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\SlaneWarriors\SlaneWarriors.cpp">
+      <Filter>Source\SlaneWarriors</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SlaneWarriors\SlaneWarriors.h">
+      <Filter>Source\SlaneWarriors</Filter>
+    </ClInclude>
+    <Filter Include="Source\SlaneWarriors\Private">
+      <UniqueIdentifier>{9DB908EE-1706-3997-866A-827B8E547A5A}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\SlaneWarriors\Private\CameraSideScroller.cpp">
+      <Filter>Source\SlaneWarriors\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlaneWarriors\Private\Cube.cpp">
+      <Filter>Source\SlaneWarriors\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlaneWarriors\Private\EAnimationHunter.cpp">
+      <Filter>Source\SlaneWarriors\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlaneWarriors\Private\ElvenlinCharacter.cpp">
+      <Filter>Source\SlaneWarriors\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlaneWarriors\Private\EnemyCharacter.cpp">
+      <Filter>Source\SlaneWarriors\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlaneWarriors\Private\HunterCharacter.cpp">
+      <Filter>Source\SlaneWarriors\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlaneWarriors\Private\InteractInterface.cpp">
+      <Filter>Source\SlaneWarriors\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlaneWarriors\Private\PlayerCharacter.cpp">
+      <Filter>Source\SlaneWarriors\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlaneWarriors\Private\SlaneFunctionLibrary.cpp">
+      <Filter>Source\SlaneWarriors\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\SlaneWarriors\Public">
+      <UniqueIdentifier>{F8F15539-B98B-3FC0-816D-0176DF0856CB}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\SlaneWarriors\Public\CameraSideScroller.h">
+      <Filter>Source\SlaneWarriors\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlaneWarriors\Public\Cube.h">
+      <Filter>Source\SlaneWarriors\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlaneWarriors\Public\EAnimationHunter.h">
+      <Filter>Source\SlaneWarriors\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlaneWarriors\Public\ElvenlinCharacter.h">
+      <Filter>Source\SlaneWarriors\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlaneWarriors\Public\EnemyCharacter.h">
+      <Filter>Source\SlaneWarriors\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlaneWarriors\Public\HunterCharacter.h">
+      <Filter>Source\SlaneWarriors\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlaneWarriors\Public\InteractInterface.h">
+      <Filter>Source\SlaneWarriors\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlaneWarriors\Public\PlayerCharacter.h">
+      <Filter>Source\SlaneWarriors\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlaneWarriors\Public\SlaneFunctionLibrary.h">
+      <Filter>Source\SlaneWarriors\Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

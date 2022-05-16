@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\UnrealProjects\\SlaneWarriors\\Source\\SlaneWarriors\\SlaneWarriors.Build.cs",
+		"C:\\UnrealProjects\\SlaneWarriors\\Source\\SlaneWarriors.Target.cs",
+		"C:\\UnrealProjects\\SlaneWarriors\\Source\\SlaneWarriorsEditor.Target.cs"
+	],
+	"EngineVersion": "5.0.1"
+}
