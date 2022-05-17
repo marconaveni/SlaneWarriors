@@ -8,6 +8,9 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UPrimitiveComponent;
+class AActor;
+struct FHitResult;
 #ifdef SLANEWARRIORS_HunterCharacter_generated_h
 #error "HunterCharacter.generated.h already included, missing '#pragma once' in HunterCharacter.h"
 #endif
@@ -18,17 +21,27 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
  \
 	DECLARE_FUNCTION(execResetAttackHunter); \
 	DECLARE_FUNCTION(execGetAnimation); \
-	DECLARE_FUNCTION(execTimerTick);
+	DECLARE_FUNCTION(execTimerTick); \
+	DECLARE_FUNCTION(execHitSwordOnOverlapEnd); \
+	DECLARE_FUNCTION(execHitSwordOnOverlapBegin);
 
 
 #define FID_SlaneWarriors_Source_SlaneWarriors_Public_HunterCharacter_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execResetAttackHunter); \
 	DECLARE_FUNCTION(execGetAnimation); \
-	DECLARE_FUNCTION(execTimerTick);
+	DECLARE_FUNCTION(execTimerTick); \
+	DECLARE_FUNCTION(execHitSwordOnOverlapEnd); \
+	DECLARE_FUNCTION(execHitSwordOnOverlapBegin);
 
 
-#define FID_SlaneWarriors_Source_SlaneWarriors_Public_HunterCharacter_h_16_EVENT_PARMS
+#define FID_SlaneWarriors_Source_SlaneWarriors_Public_HunterCharacter_h_16_EVENT_PARMS \
+	struct HunterCharacter_eventAttackHitResult_Parms \
+	{ \
+		FHitResult OutHit; \
+	};
+
+
 #define FID_SlaneWarriors_Source_SlaneWarriors_Public_HunterCharacter_h_16_CALLBACK_WRAPPERS
 #define FID_SlaneWarriors_Source_SlaneWarriors_Public_HunterCharacter_h_16_INCLASS_NO_PURE_DECLS \
 private: \

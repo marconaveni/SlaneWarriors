@@ -13,6 +13,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerCharacter() {}
 	SLANEWARRIORS_API UClass* Z_Construct_UClass_APlayerCharacter();
 	PAPER2D_API UClass* Z_Construct_UClass_APaperCharacter();
 	UPackage* Z_Construct_UPackage__Script_SlaneWarriors();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
@@ -52,6 +53,14 @@ void EmptyLinkFunctionForGeneratedCodePlayerCharacter() {}
 		P_THIS->TimerHandleTick();
 		P_NATIVE_END;
 	}
+	static FName NAME_APlayerCharacter_ApplyDamageCharacter = FName(TEXT("ApplyDamageCharacter"));
+	void APlayerCharacter::ApplyDamageCharacter(FVector ActorLocation, float Value)
+	{
+		PlayerCharacter_eventApplyDamageCharacter_Parms Parms;
+		Parms.ActorLocation=ActorLocation;
+		Parms.Value=Value;
+		ProcessEvent(FindFunctionChecked(NAME_APlayerCharacter_ApplyDamageCharacter),&Parms);
+	}
 	void APlayerCharacter::StaticRegisterNativesAPlayerCharacter()
 	{
 		UClass* Class = APlayerCharacter::StaticClass();
@@ -61,6 +70,39 @@ void EmptyLinkFunctionForGeneratedCodePlayerCharacter() {}
 			{ "TimerHandleTick", &APlayerCharacter::execTimerHandleTick },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics
+	{
+		static const UECodeGen_Private::FStructPropertyParams NewProp_ActorLocation;
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_Value;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::NewProp_ActorLocation = { "ActorLocation", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(PlayerCharacter_eventApplyDamageCharacter_Parms, ActorLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::NewProp_Value = { "Value", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(PlayerCharacter_eventApplyDamageCharacter_Parms, Value), METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::NewProp_ActorLocation,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::NewProp_Value,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//function called only blueprint\n" },
+		{ "ModuleRelativePath", "Public/PlayerCharacter.h" },
+		{ "ToolTip", "function called only blueprint" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APlayerCharacter, nullptr, "ApplyDamageCharacter", nullptr, nullptr, sizeof(PlayerCharacter_eventApplyDamageCharacter_Parms), Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08820800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_APlayerCharacter_OnOverlapBegin_Statics
 	{
@@ -278,6 +320,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerCharacter() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_SlaneWarriors,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_APlayerCharacter_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_APlayerCharacter_ApplyDamageCharacter, "ApplyDamageCharacter" }, // 4138112161
 		{ &Z_Construct_UFunction_APlayerCharacter_OnOverlapBegin, "OnOverlapBegin" }, // 3917199386
 		{ &Z_Construct_UFunction_APlayerCharacter_OnOverlapEnd, "OnOverlapEnd" }, // 1219663066
 		{ &Z_Construct_UFunction_APlayerCharacter_TimerHandleTick, "TimerHandleTick" }, // 2972376312
@@ -390,9 +433,9 @@ void EmptyLinkFunctionForGeneratedCodePlayerCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APlayerCharacter, APlayerCharacter::StaticClass, TEXT("APlayerCharacter"), &Z_Registration_Info_UClass_APlayerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerCharacter), 831464178U) },
+		{ Z_Construct_UClass_APlayerCharacter, APlayerCharacter::StaticClass, TEXT("APlayerCharacter"), &Z_Registration_Info_UClass_APlayerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerCharacter), 3459235495U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_482907375(TEXT("/Script/SlaneWarriors"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_3463361134(TEXT("/Script/SlaneWarriors"),
 		Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

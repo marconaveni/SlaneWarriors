@@ -59,6 +59,10 @@ public:
 	//End Boxoverlap BouncingOffCorners
 	UFUNCTION()
 	void OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	//function called only blueprint
+	UFUNCTION(BlueprintImplementableEvent)
+	void ApplyDamageCharacter(FVector ActorLocation, float Value);
 	
 	//Interfaces Implementations
 	void ApplyDamage_Implementation(FVector ActorLocation, float Value);

@@ -13,12 +13,54 @@ void EmptyLinkFunctionForGeneratedCodeEnemyCharacter() {}
 	SLANEWARRIORS_API UClass* Z_Construct_UClass_AEnemyCharacter();
 	PAPER2D_API UClass* Z_Construct_UClass_APaperCharacter();
 	UPackage* Z_Construct_UPackage__Script_SlaneWarriors();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_USphereComponent_NoRegister();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbookComponent_NoRegister();
 	SLANEWARRIORS_API UClass* Z_Construct_UClass_UInteractInterface_NoRegister();
 // End Cross Module References
+	static FName NAME_AEnemyCharacter_ApplyDamageEnemy = FName(TEXT("ApplyDamageEnemy"));
+	void AEnemyCharacter::ApplyDamageEnemy(FVector ActorLocation, float Value)
+	{
+		EnemyCharacter_eventApplyDamageEnemy_Parms Parms;
+		Parms.ActorLocation=ActorLocation;
+		Parms.Value=Value;
+		ProcessEvent(FindFunctionChecked(NAME_AEnemyCharacter_ApplyDamageEnemy),&Parms);
+	}
 	void AEnemyCharacter::StaticRegisterNativesAEnemyCharacter()
 	{
+	}
+	struct Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics
+	{
+		static const UECodeGen_Private::FStructPropertyParams NewProp_ActorLocation;
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_Value;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::NewProp_ActorLocation = { "ActorLocation", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(EnemyCharacter_eventApplyDamageEnemy_Parms, ActorLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::NewProp_Value = { "Value", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(EnemyCharacter_eventApplyDamageEnemy_Parms, Value), METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::NewProp_ActorLocation,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::NewProp_Value,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//function called only blueprint\n" },
+		{ "ModuleRelativePath", "Public/EnemyCharacter.h" },
+		{ "ToolTip", "function called only blueprint" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AEnemyCharacter, nullptr, "ApplyDamageEnemy", nullptr, nullptr, sizeof(EnemyCharacter_eventApplyDamageEnemy_Parms), Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08820800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(AEnemyCharacter);
 	UClass* Z_Construct_UClass_AEnemyCharacter_NoRegister()
@@ -28,6 +70,7 @@ void EmptyLinkFunctionForGeneratedCodeEnemyCharacter() {}
 	struct Z_Construct_UClass_AEnemyCharacter_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -56,6 +99,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemyCharacter() {}
 	UObject* (*const Z_Construct_UClass_AEnemyCharacter_Statics::DependentSingletons[])() = {
 		(UObject* (*)())Z_Construct_UClass_APaperCharacter,
 		(UObject* (*)())Z_Construct_UPackage__Script_SlaneWarriors,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_AEnemyCharacter_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_AEnemyCharacter_ApplyDamageEnemy, "ApplyDamageEnemy" }, // 2217585288
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemyCharacter_Statics::Class_MetaDataParams[] = {
@@ -118,11 +164,11 @@ void EmptyLinkFunctionForGeneratedCodeEnemyCharacter() {}
 		"Game",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_AEnemyCharacter_Statics::PropPointers,
 		InterfaceParams,
 		UE_ARRAY_COUNT(DependentSingletons),
-		0,
+		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_AEnemyCharacter_Statics::PropPointers),
 		UE_ARRAY_COUNT(InterfaceParams),
 		0x009000A4u,
@@ -146,9 +192,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemyCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemyCharacter, AEnemyCharacter::StaticClass, TEXT("AEnemyCharacter"), &Z_Registration_Info_UClass_AEnemyCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemyCharacter), 487591093U) },
+		{ Z_Construct_UClass_AEnemyCharacter, AEnemyCharacter::StaticClass, TEXT("AEnemyCharacter"), &Z_Registration_Info_UClass_AEnemyCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemyCharacter), 2770245823U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_2410310220(TEXT("/Script/SlaneWarriors"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_2777701571(TEXT("/Script/SlaneWarriors"),
 		Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

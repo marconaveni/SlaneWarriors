@@ -8,7 +8,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-class APaperCharacter;
+class UPaperFlipbookComponent;
 class UPaperFlipbook;
 class UBoxComponent;
 class AActor;

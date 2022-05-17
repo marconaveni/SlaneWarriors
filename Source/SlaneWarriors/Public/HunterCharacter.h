@@ -106,8 +106,19 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variables Hunter")
 	int AttackTrigger;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variables Hunter")
+	bool BlockHit;
+
 
 	FTimerHandle pTimerHandle;
+
+	//Begin HitSword overlap 
+	UFUNCTION()
+	void HitSwordOnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	//End HitSword overlap 
+	UFUNCTION()
+	void HitSwordOnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 	UFUNCTION()
 	void TimerTick();
@@ -124,6 +135,10 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void HitBoxReset();
 
+	//function called only blueprint
+	UFUNCTION(BlueprintImplementableEvent)
+	void AttackHitResult(FHitResult OutHit);
+
 	UFUNCTION(BlueprintPure)
 	EAnimationsHunter GetAnimation();
 
@@ -131,6 +146,10 @@ public:
 	void ResetAttackHunter();
 
 	//functions called only cpp
+	void Attacking();
+
+	void SetFrameHitBox();
+
 	void UpdateRotationHunter();
 
 	void UpdateAnimation();

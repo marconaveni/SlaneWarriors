@@ -16,6 +16,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_SPARSE_DATA
 #define FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_RPC_WRAPPERS
 #define FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_RPC_WRAPPERS_NO_PURE_DECLS
+#define FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_EVENT_PARMS \
+	struct EnemyCharacter_eventApplyDamageEnemy_Parms \
+	{ \
+		FVector ActorLocation; \
+		float Value; \
+	};
+
+
+#define FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_CALLBACK_WRAPPERS
 #define FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAEnemyCharacter(); \
@@ -60,12 +69,16 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AEnemyCharacter)
 
 
-#define FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_13_PROLOG
+#define FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_13_PROLOG \
+	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_EVENT_PARMS
+
+
 #define FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_SPARSE_DATA \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_RPC_WRAPPERS \
+	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_CALLBACK_WRAPPERS \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_INCLASS \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_STANDARD_CONSTRUCTORS \
 public: \
@@ -77,6 +90,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_SPARSE_DATA \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_CALLBACK_WRAPPERS \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_INCLASS_NO_PURE_DECLS \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_EnemyCharacter_h_16_ENHANCED_CONSTRUCTORS \
 private: \

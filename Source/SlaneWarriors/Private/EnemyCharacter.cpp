@@ -29,6 +29,7 @@ void AEnemyCharacter::Tick(float DeltaTime)
 void AEnemyCharacter::ApplyDamage_Implementation(FVector ActorLocation, float Value)
 {
 	//apply damage code
+	ApplyDamageEnemy(ActorLocation, Value);
 }
 
 void AEnemyCharacter::UpdateRotation()

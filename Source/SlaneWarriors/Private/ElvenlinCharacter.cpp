@@ -55,7 +55,7 @@ void AElvenlinCharacter::Landed(const FHitResult& Hit)
 
 	DamageElvenlin = false;
 	if (isAttackElvenlin == false) {
-		USlaneFunctionLibrary::SetAnimation(this, JumpOnlanded, false, true);
+		USlaneFunctionLibrary::SetAnimation(GetSprite(), JumpOnlanded, false, true);
 	}
 }
 
@@ -65,26 +65,26 @@ void AElvenlinCharacter::Landed(const FHitResult& Hit)
 void AElvenlinCharacter::UpdateAnimation()
 {
 	if (DamageElvenlin) {
-		USlaneFunctionLibrary::SetAnimation(this, HitPlayer, true, false);
+		USlaneFunctionLibrary::SetAnimation(GetSprite(), HitPlayer, true, false);
 	}
 	else if (isAttackElvenlin) {
 		if (GetSprite()->GetFlipbook() == Attack) {
-			if (USlaneFunctionLibrary::AnimationNotify(this, Attack, 5)) {
+			if (USlaneFunctionLibrary::AnimationNotify(GetSprite(), Attack, 5)) {
 				isAttackElvenlin = false;
 			}
 		}
 		else {
-			USlaneFunctionLibrary::SetAnimation(this, Attack, true, false);
+			USlaneFunctionLibrary::SetAnimation(GetSprite(), Attack, true, false);
 		}
 	}
-	else if (USlaneFunctionLibrary::AnimationNotify(this, JumpOnlanded, 1) == false && GetSprite()->GetFlipbook() == JumpOnlanded) {
+	else if (USlaneFunctionLibrary::AnimationNotify(GetSprite(), JumpOnlanded, 1) == false && GetSprite()->GetFlipbook() == JumpOnlanded) {
 
 	}
 	else if (GetCharacterMovement()->IsFalling()) {
 		if (GetCharacterMovement()->Velocity.Z < 0)
-			USlaneFunctionLibrary::SetAnimation(this, JumpFallingLoop, true, false);
+			USlaneFunctionLibrary::SetAnimation(GetSprite(), JumpFallingLoop, true, false);
 		else {
-			USlaneFunctionLibrary::SetAnimation(this, JumpLoop, true, false);
+			USlaneFunctionLibrary::SetAnimation(GetSprite(), JumpLoop, true, false);
 		}
 	}
 	else {
@@ -94,7 +94,7 @@ void AElvenlinCharacter::UpdateAnimation()
 		UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? RunningAnimation : IdleAnimation;
 		if (GetSprite()->GetFlipbook() != DesiredAnimation)
 		{
-			USlaneFunctionLibrary::SetAnimation(this, DesiredAnimation, true, false);
+			USlaneFunctionLibrary::SetAnimation(GetSprite(), DesiredAnimation, true, false);
 		}
 	}
 

@@ -48,8 +48,14 @@
             "c:\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\capsulecomponent.generated.h",
             "c:\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\components\\spherecomponent.h",
             "c:\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\spherecomponent.generated.h",
+            "c:\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\kismet\\kismetsystemlibrary.h",
+            "c:\\ue_5.0\\engine\\source\\runtime\\coreuobject\\public\\uobject\\propertyaccessutil.h",
+            "c:\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\kismetsystemlibrary.generated.h",
+            "c:\\unrealprojects\\slanewarriors\\source\\slanewarriors\\public\\enemycharacter.h",
+            "c:\\unrealprojects\\slanewarriors\\intermediate\\build\\win64\\unrealeditor\\inc\\slanewarriors\\enemycharacter.generated.h",
             "c:\\unrealprojects\\slanewarriors\\source\\slanewarriors\\public\\slanefunctionlibrary.h",
-            "c:\\unrealprojects\\slanewarriors\\intermediate\\build\\win64\\unrealeditor\\inc\\slanewarriors\\slanefunctionlibrary.generated.h"
+            "c:\\unrealprojects\\slanewarriors\\intermediate\\build\\win64\\unrealeditor\\inc\\slanewarriors\\slanefunctionlibrary.generated.h",
+            "c:\\ue_5.0\\engine\\source\\runtime\\engine\\public\\engineutils.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

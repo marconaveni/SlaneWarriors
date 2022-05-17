@@ -38,6 +38,10 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	//function called only blueprint
+	UFUNCTION(BlueprintImplementableEvent)
+	void ApplyDamageEnemy(FVector ActorLocation, float Value);
+
 	//Interfaces Implementations
 	void ApplyDamage_Implementation(FVector ActorLocation, float Value);
 

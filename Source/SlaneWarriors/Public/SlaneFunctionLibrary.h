@@ -20,9 +20,9 @@ public:
 	static bool isOverlapBox(class UBoxComponent* boxCollision, class AActor* actor);
 
 	UFUNCTION(BlueprintCallable, Category = "Slane Functions")
-	static void SetAnimation(class APaperCharacter* PaperCharacter ,class UPaperFlipbook* Animation, bool NewLooping, bool PlayFromStart);
+	static void SetAnimation(class UPaperFlipbookComponent* Flipbook, class UPaperFlipbook* Animation, bool NewLooping, bool PlayFromStart);
 
 	UFUNCTION(BlueprintPure, Category = "Slane Functions")
-    static bool AnimationNotify(class APaperCharacter* PaperCharacter,class UPaperFlipbook* Animation, int frame);
+    static bool AnimationNotify(class UPaperFlipbookComponent* Flipbook,class UPaperFlipbook* Animation, int frame);
 	
 };

@@ -13,30 +13,30 @@ void EmptyLinkFunctionForGeneratedCodeSlaneFunctionLibrary() {}
 	SLANEWARRIORS_API UClass* Z_Construct_UClass_USlaneFunctionLibrary();
 	ENGINE_API UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
 	UPackage* Z_Construct_UPackage__Script_SlaneWarriors();
-	PAPER2D_API UClass* Z_Construct_UClass_APaperCharacter_NoRegister();
+	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbookComponent_NoRegister();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 // End Cross Module References
 	DEFINE_FUNCTION(USlaneFunctionLibrary::execAnimationNotify)
 	{
-		P_GET_OBJECT(APaperCharacter,Z_Param_PaperCharacter);
+		P_GET_OBJECT(UPaperFlipbookComponent,Z_Param_Flipbook);
 		P_GET_OBJECT(UPaperFlipbook,Z_Param_Animation);
 		P_GET_PROPERTY(FIntProperty,Z_Param_frame);
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		*(bool*)Z_Param__Result=USlaneFunctionLibrary::AnimationNotify(Z_Param_PaperCharacter,Z_Param_Animation,Z_Param_frame);
+		*(bool*)Z_Param__Result=USlaneFunctionLibrary::AnimationNotify(Z_Param_Flipbook,Z_Param_Animation,Z_Param_frame);
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(USlaneFunctionLibrary::execSetAnimation)
 	{
-		P_GET_OBJECT(APaperCharacter,Z_Param_PaperCharacter);
+		P_GET_OBJECT(UPaperFlipbookComponent,Z_Param_Flipbook);
 		P_GET_OBJECT(UPaperFlipbook,Z_Param_Animation);
 		P_GET_UBOOL(Z_Param_NewLooping);
 		P_GET_UBOOL(Z_Param_PlayFromStart);
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		USlaneFunctionLibrary::SetAnimation(Z_Param_PaperCharacter,Z_Param_Animation,Z_Param_NewLooping,Z_Param_PlayFromStart);
+		USlaneFunctionLibrary::SetAnimation(Z_Param_Flipbook,Z_Param_Animation,Z_Param_NewLooping,Z_Param_PlayFromStart);
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(USlaneFunctionLibrary::execisOverlapBox)
@@ -62,12 +62,15 @@ void EmptyLinkFunctionForGeneratedCodeSlaneFunctionLibrary() {}
 	{
 		struct SlaneFunctionLibrary_eventAnimationNotify_Parms
 		{
-			APaperCharacter* PaperCharacter;
+			UPaperFlipbookComponent* Flipbook;
 			UPaperFlipbook* Animation;
 			int32 frame;
 			bool ReturnValue;
 		};
-		static const UECodeGen_Private::FObjectPropertyParams NewProp_PaperCharacter;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Flipbook_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_Flipbook;
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Animation;
 		static const UECodeGen_Private::FUnsizedIntPropertyParams NewProp_frame;
 		static void NewProp_ReturnValue_SetBit(void* Obj);
@@ -78,7 +81,12 @@ void EmptyLinkFunctionForGeneratedCodeSlaneFunctionLibrary() {}
 #endif
 		static const UECodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_PaperCharacter = { "PaperCharacter", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SlaneFunctionLibrary_eventAnimationNotify_Parms, PaperCharacter), Z_Construct_UClass_APaperCharacter_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_Flipbook_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_Flipbook = { "Flipbook", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SlaneFunctionLibrary_eventAnimationNotify_Parms, Flipbook), Z_Construct_UClass_UPaperFlipbookComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_Flipbook_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_Flipbook_MetaData)) };
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_Animation = { "Animation", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SlaneFunctionLibrary_eventAnimationNotify_Parms, Animation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UECodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_frame = { "frame", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SlaneFunctionLibrary_eventAnimationNotify_Parms, frame), METADATA_PARAMS(nullptr, 0) };
 	void Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_ReturnValue_SetBit(void* Obj)
@@ -87,7 +95,7 @@ void EmptyLinkFunctionForGeneratedCodeSlaneFunctionLibrary() {}
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(SlaneFunctionLibrary_eventAnimationNotify_Parms), &Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::PropPointers[] = {
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_PaperCharacter,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_Flipbook,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_Animation,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_frame,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify_Statics::NewProp_ReturnValue,
@@ -166,12 +174,15 @@ void EmptyLinkFunctionForGeneratedCodeSlaneFunctionLibrary() {}
 	{
 		struct SlaneFunctionLibrary_eventSetAnimation_Parms
 		{
-			APaperCharacter* PaperCharacter;
+			UPaperFlipbookComponent* Flipbook;
 			UPaperFlipbook* Animation;
 			bool NewLooping;
 			bool PlayFromStart;
 		};
-		static const UECodeGen_Private::FObjectPropertyParams NewProp_PaperCharacter;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Flipbook_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_Flipbook;
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Animation;
 		static void NewProp_NewLooping_SetBit(void* Obj);
 		static const UECodeGen_Private::FBoolPropertyParams NewProp_NewLooping;
@@ -183,7 +194,12 @@ void EmptyLinkFunctionForGeneratedCodeSlaneFunctionLibrary() {}
 #endif
 		static const UECodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_PaperCharacter = { "PaperCharacter", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SlaneFunctionLibrary_eventSetAnimation_Parms, PaperCharacter), Z_Construct_UClass_APaperCharacter_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_Flipbook_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_Flipbook = { "Flipbook", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SlaneFunctionLibrary_eventSetAnimation_Parms, Flipbook), Z_Construct_UClass_UPaperFlipbookComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_Flipbook_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_Flipbook_MetaData)) };
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_Animation = { "Animation", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SlaneFunctionLibrary_eventSetAnimation_Parms, Animation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	void Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_NewLooping_SetBit(void* Obj)
 	{
@@ -196,7 +212,7 @@ void EmptyLinkFunctionForGeneratedCodeSlaneFunctionLibrary() {}
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_PlayFromStart = { "PlayFromStart", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(SlaneFunctionLibrary_eventSetAnimation_Parms), &Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_PlayFromStart_SetBit, METADATA_PARAMS(nullptr, 0) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::PropPointers[] = {
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_PaperCharacter,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_Flipbook,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_Animation,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_NewLooping,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation_Statics::NewProp_PlayFromStart,
@@ -237,9 +253,9 @@ void EmptyLinkFunctionForGeneratedCodeSlaneFunctionLibrary() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_SlaneWarriors,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_USlaneFunctionLibrary_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify, "AnimationNotify" }, // 53738117
+		{ &Z_Construct_UFunction_USlaneFunctionLibrary_AnimationNotify, "AnimationNotify" }, // 3974337586
 		{ &Z_Construct_UFunction_USlaneFunctionLibrary_isOverlapBox, "isOverlapBox" }, // 561314668
-		{ &Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation, "SetAnimation" }, // 3633862346
+		{ &Z_Construct_UFunction_USlaneFunctionLibrary_SetAnimation, "SetAnimation" }, // 3568619309
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USlaneFunctionLibrary_Statics::Class_MetaDataParams[] = {
@@ -284,9 +300,9 @@ void EmptyLinkFunctionForGeneratedCodeSlaneFunctionLibrary() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_SlaneFunctionLibrary_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_USlaneFunctionLibrary, USlaneFunctionLibrary::StaticClass, TEXT("USlaneFunctionLibrary"), &Z_Registration_Info_UClass_USlaneFunctionLibrary, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USlaneFunctionLibrary), 2025374364U) },
+		{ Z_Construct_UClass_USlaneFunctionLibrary, USlaneFunctionLibrary::StaticClass, TEXT("USlaneFunctionLibrary"), &Z_Registration_Info_UClass_USlaneFunctionLibrary, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USlaneFunctionLibrary), 1998669048U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_SlaneFunctionLibrary_h_23246290(TEXT("/Script/SlaneWarriors"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_SlaneFunctionLibrary_h_2881884891(TEXT("/Script/SlaneWarriors"),
 		Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_SlaneFunctionLibrary_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_SlaneFunctionLibrary_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

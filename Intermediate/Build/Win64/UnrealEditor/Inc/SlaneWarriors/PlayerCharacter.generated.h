@@ -31,6 +31,15 @@ struct FHitResult;
 	DECLARE_FUNCTION(execTimerHandleTick);
 
 
+#define FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_EVENT_PARMS \
+	struct PlayerCharacter_eventApplyDamageCharacter_Parms \
+	{ \
+		FVector ActorLocation; \
+		float Value; \
+	};
+
+
+#define FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_CALLBACK_WRAPPERS
 #define FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPlayerCharacter(); \
@@ -75,12 +84,16 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(APlayerCharacter)
 
 
-#define FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_14_PROLOG
+#define FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_14_PROLOG \
+	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_EVENT_PARMS
+
+
 #define FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_SPARSE_DATA \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_RPC_WRAPPERS \
+	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_CALLBACK_WRAPPERS \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_INCLASS \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_STANDARD_CONSTRUCTORS \
 public: \
@@ -92,6 +105,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_SPARSE_DATA \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_CALLBACK_WRAPPERS \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_INCLASS_NO_PURE_DECLS \
 	FID_SlaneWarriors_Source_SlaneWarriors_Public_PlayerCharacter_h_17_ENHANCED_CONSTRUCTORS \
 private: \

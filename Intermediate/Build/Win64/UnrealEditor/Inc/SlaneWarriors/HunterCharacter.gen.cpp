@@ -13,7 +13,10 @@ void EmptyLinkFunctionForGeneratedCodeHunterCharacter() {}
 	SLANEWARRIORS_API UClass* Z_Construct_UClass_AHunterCharacter();
 	SLANEWARRIORS_API UClass* Z_Construct_UClass_APlayerCharacter();
 	UPackage* Z_Construct_UPackage__Script_SlaneWarriors();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 	SLANEWARRIORS_API UEnum* Z_Construct_UEnum_SlaneWarriors_EAnimationsHunter();
+	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USphereComponent_NoRegister();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
@@ -39,10 +42,41 @@ void EmptyLinkFunctionForGeneratedCodeHunterCharacter() {}
 		P_THIS->TimerTick();
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(AHunterCharacter::execHitSwordOnOverlapEnd)
+	{
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComp);
+		P_GET_OBJECT(AActor,Z_Param_OtherActor);
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp);
+		P_GET_PROPERTY(FIntProperty,Z_Param_OtherBodyIndex);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->HitSwordOnOverlapEnd(Z_Param_OverlappedComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AHunterCharacter::execHitSwordOnOverlapBegin)
+	{
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComp);
+		P_GET_OBJECT(AActor,Z_Param_OtherActor);
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp);
+		P_GET_PROPERTY(FIntProperty,Z_Param_OtherBodyIndex);
+		P_GET_UBOOL(Z_Param_bFromSweep);
+		P_GET_STRUCT_REF(FHitResult,Z_Param_Out_SweepResult);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->HitSwordOnOverlapBegin(Z_Param_OverlappedComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult);
+		P_NATIVE_END;
+	}
 	static FName NAME_AHunterCharacter_AttackEvent = FName(TEXT("AttackEvent"));
 	void AHunterCharacter::AttackEvent()
 	{
 		ProcessEvent(FindFunctionChecked(NAME_AHunterCharacter_AttackEvent),NULL);
+	}
+	static FName NAME_AHunterCharacter_AttackHitResult = FName(TEXT("AttackHitResult"));
+	void AHunterCharacter::AttackHitResult(FHitResult OutHit)
+	{
+		HunterCharacter_eventAttackHitResult_Parms Parms;
+		Parms.OutHit=OutHit;
+		ProcessEvent(FindFunctionChecked(NAME_AHunterCharacter_AttackHitResult),&Parms);
 	}
 	static FName NAME_AHunterCharacter_HitBoxReset = FName(TEXT("HitBoxReset"));
 	void AHunterCharacter::HitBoxReset()
@@ -59,6 +93,8 @@ void EmptyLinkFunctionForGeneratedCodeHunterCharacter() {}
 		UClass* Class = AHunterCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
 			{ "GetAnimation", &AHunterCharacter::execGetAnimation },
+			{ "HitSwordOnOverlapBegin", &AHunterCharacter::execHitSwordOnOverlapBegin },
+			{ "HitSwordOnOverlapEnd", &AHunterCharacter::execHitSwordOnOverlapEnd },
 			{ "ResetAttackHunter", &AHunterCharacter::execResetAttackHunter },
 			{ "TimerTick", &AHunterCharacter::execTimerTick },
 		};
@@ -85,6 +121,36 @@ void EmptyLinkFunctionForGeneratedCodeHunterCharacter() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AHunterCharacter_AttackEvent_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics
+	{
+		static const UECodeGen_Private::FStructPropertyParams NewProp_OutHit;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics::NewProp_OutHit = { "OutHit", nullptr, (EPropertyFlags)0x0010008000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HunterCharacter_eventAttackHitResult_Parms, OutHit), Z_Construct_UScriptStruct_FHitResult, METADATA_PARAMS(nullptr, 0) }; // 1416937132
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics::NewProp_OutHit,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//function called only blueprint\n" },
+		{ "ModuleRelativePath", "Public/HunterCharacter.h" },
+		{ "ToolTip", "function called only blueprint" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AHunterCharacter, nullptr, "AttackHitResult", nullptr, nullptr, sizeof(HunterCharacter_eventAttackHitResult_Parms), Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AHunterCharacter_AttackHitResult()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AHunterCharacter_AttackHitResult_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -141,6 +207,151 @@ void EmptyLinkFunctionForGeneratedCodeHunterCharacter() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AHunterCharacter_HitBoxReset_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics
+	{
+		struct HunterCharacter_eventHitSwordOnOverlapBegin_Parms
+		{
+			UPrimitiveComponent* OverlappedComp;
+			AActor* OtherActor;
+			UPrimitiveComponent* OtherComp;
+			int32 OtherBodyIndex;
+			bool bFromSweep;
+			FHitResult SweepResult;
+		};
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_OverlappedComp_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_OverlappedComp;
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
+		static const UECodeGen_Private::FIntPropertyParams NewProp_OtherBodyIndex;
+		static void NewProp_bFromSweep_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bFromSweep;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_SweepResult_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_SweepResult;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OverlappedComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OverlappedComp = { "OverlappedComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HunterCharacter_eventHitSwordOnOverlapBegin_Parms, OverlappedComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OverlappedComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OverlappedComp_MetaData)) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HunterCharacter_eventHitSwordOnOverlapBegin_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OtherComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HunterCharacter_eventHitSwordOnOverlapBegin_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OtherComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OtherComp_MetaData)) };
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OtherBodyIndex = { "OtherBodyIndex", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HunterCharacter_eventHitSwordOnOverlapBegin_Parms, OtherBodyIndex), METADATA_PARAMS(nullptr, 0) };
+	void Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_bFromSweep_SetBit(void* Obj)
+	{
+		((HunterCharacter_eventHitSwordOnOverlapBegin_Parms*)Obj)->bFromSweep = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_bFromSweep = { "bFromSweep", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(HunterCharacter_eventHitSwordOnOverlapBegin_Parms), &Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_bFromSweep_SetBit, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_SweepResult_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_SweepResult = { "SweepResult", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HunterCharacter_eventHitSwordOnOverlapBegin_Parms, SweepResult), Z_Construct_UScriptStruct_FHitResult, METADATA_PARAMS(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_SweepResult_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_SweepResult_MetaData)) }; // 1416937132
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OverlappedComp,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OtherActor,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OtherComp,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_OtherBodyIndex,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_bFromSweep,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::NewProp_SweepResult,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//Begin HitSword overlap \n" },
+		{ "ModuleRelativePath", "Public/HunterCharacter.h" },
+		{ "ToolTip", "Begin HitSword overlap" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AHunterCharacter, nullptr, "HitSwordOnOverlapBegin", nullptr, nullptr, sizeof(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::HunterCharacter_eventHitSwordOnOverlapBegin_Parms), Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics
+	{
+		struct HunterCharacter_eventHitSwordOnOverlapEnd_Parms
+		{
+			UPrimitiveComponent* OverlappedComp;
+			AActor* OtherActor;
+			UPrimitiveComponent* OtherComp;
+			int32 OtherBodyIndex;
+		};
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_OverlappedComp_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_OverlappedComp;
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
+		static const UECodeGen_Private::FIntPropertyParams NewProp_OtherBodyIndex;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OverlappedComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OverlappedComp = { "OverlappedComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HunterCharacter_eventHitSwordOnOverlapEnd_Parms, OverlappedComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OverlappedComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OverlappedComp_MetaData)) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HunterCharacter_eventHitSwordOnOverlapEnd_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OtherComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HunterCharacter_eventHitSwordOnOverlapEnd_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OtherComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OtherComp_MetaData)) };
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OtherBodyIndex = { "OtherBodyIndex", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HunterCharacter_eventHitSwordOnOverlapEnd_Parms, OtherBodyIndex), METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OverlappedComp,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OtherActor,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OtherComp,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::NewProp_OtherBodyIndex,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//End HitSword overlap \n" },
+		{ "ModuleRelativePath", "Public/HunterCharacter.h" },
+		{ "ToolTip", "End HitSword overlap" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AHunterCharacter, nullptr, "HitSwordOnOverlapEnd", nullptr, nullptr, sizeof(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::HunterCharacter_eventHitSwordOnOverlapEnd_Parms), Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -320,6 +531,11 @@ void EmptyLinkFunctionForGeneratedCodeHunterCharacter() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_AttackTrigger_MetaData[];
 #endif
 		static const UECodeGen_Private::FUnsizedIntPropertyParams NewProp_AttackTrigger;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_BlockHit_MetaData[];
+#endif
+		static void NewProp_BlockHit_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_BlockHit;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -330,8 +546,11 @@ void EmptyLinkFunctionForGeneratedCodeHunterCharacter() {}
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AHunterCharacter_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_AHunterCharacter_AttackEvent, "AttackEvent" }, // 1583559724
+		{ &Z_Construct_UFunction_AHunterCharacter_AttackHitResult, "AttackHitResult" }, // 2582783855
 		{ &Z_Construct_UFunction_AHunterCharacter_GetAnimation, "GetAnimation" }, // 3300763397
 		{ &Z_Construct_UFunction_AHunterCharacter_HitBoxReset, "HitBoxReset" }, // 3668994232
+		{ &Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapBegin, "HitSwordOnOverlapBegin" }, // 935440608
+		{ &Z_Construct_UFunction_AHunterCharacter_HitSwordOnOverlapEnd, "HitSwordOnOverlapEnd" }, // 240395458
 		{ &Z_Construct_UFunction_AHunterCharacter_ResetAttackHunter, "ResetAttackHunter" }, // 3677532061
 		{ &Z_Construct_UFunction_AHunterCharacter_TickedEvent, "TickedEvent" }, // 1655009679
 		{ &Z_Construct_UFunction_AHunterCharacter_TimerTick, "TimerTick" }, // 1150352962
@@ -532,6 +751,17 @@ void EmptyLinkFunctionForGeneratedCodeHunterCharacter() {}
 	};
 #endif
 	const UECodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AHunterCharacter_Statics::NewProp_AttackTrigger = { "AttackTrigger", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AHunterCharacter, AttackTrigger), METADATA_PARAMS(Z_Construct_UClass_AHunterCharacter_Statics::NewProp_AttackTrigger_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AHunterCharacter_Statics::NewProp_AttackTrigger_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AHunterCharacter_Statics::NewProp_BlockHit_MetaData[] = {
+		{ "Category", "Variables Hunter" },
+		{ "ModuleRelativePath", "Public/HunterCharacter.h" },
+	};
+#endif
+	void Z_Construct_UClass_AHunterCharacter_Statics::NewProp_BlockHit_SetBit(void* Obj)
+	{
+		((AHunterCharacter*)Obj)->BlockHit = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AHunterCharacter_Statics::NewProp_BlockHit = { "BlockHit", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AHunterCharacter), &Z_Construct_UClass_AHunterCharacter_Statics::NewProp_BlockHit_SetBit, METADATA_PARAMS(Z_Construct_UClass_AHunterCharacter_Statics::NewProp_BlockHit_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AHunterCharacter_Statics::NewProp_BlockHit_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AHunterCharacter_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHunterCharacter_Statics::NewProp_HitBoxSword,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHunterCharacter_Statics::NewProp_IdleAnimation,
@@ -555,6 +785,7 @@ void EmptyLinkFunctionForGeneratedCodeHunterCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHunterCharacter_Statics::NewProp_HitboxSwordLocation,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHunterCharacter_Statics::NewProp_DamageHunter,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHunterCharacter_Statics::NewProp_AttackTrigger,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AHunterCharacter_Statics::NewProp_BlockHit,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AHunterCharacter_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AHunterCharacter>::IsAbstract,
@@ -592,9 +823,9 @@ void EmptyLinkFunctionForGeneratedCodeHunterCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_HunterCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AHunterCharacter, AHunterCharacter::StaticClass, TEXT("AHunterCharacter"), &Z_Registration_Info_UClass_AHunterCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AHunterCharacter), 945379642U) },
+		{ Z_Construct_UClass_AHunterCharacter, AHunterCharacter::StaticClass, TEXT("AHunterCharacter"), &Z_Registration_Info_UClass_AHunterCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AHunterCharacter), 349751996U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_HunterCharacter_h_3288988265(TEXT("/Script/SlaneWarriors"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_HunterCharacter_h_3285102439(TEXT("/Script/SlaneWarriors"),
 		Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_HunterCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SlaneWarriors_Source_SlaneWarriors_Public_HunterCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

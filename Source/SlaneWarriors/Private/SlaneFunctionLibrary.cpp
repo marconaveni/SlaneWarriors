@@ -27,26 +27,26 @@ bool USlaneFunctionLibrary::isOverlapBox(UBoxComponent* boxCollision, AActor* ac
 	}
 }
 
-void USlaneFunctionLibrary::SetAnimation(APaperCharacter* PaperCharacter, UPaperFlipbook* Animation, bool NewLooping, bool PlayFromStart)
+
+void USlaneFunctionLibrary::SetAnimation(UPaperFlipbookComponent* Flipbook, UPaperFlipbook* Animation, bool NewLooping, bool PlayFromStart)
 {
-	if (PaperCharacter != nullptr)
-	{
-		PaperCharacter->GetSprite()->SetFlipbook(Animation);
-		PaperCharacter->GetSprite()->SetLooping(NewLooping);
-		if (PlayFromStart) {
-			PaperCharacter->GetSprite()->PlayFromStart();
-		}
-		else {
-			PaperCharacter->GetSprite()->Play();
-		}
+	Flipbook->SetFlipbook(Animation);
+	Flipbook->SetLooping(NewLooping);
+	if (PlayFromStart) {
+		Flipbook->PlayFromStart();
+	}
+	else {
+		Flipbook->Play();
 	}
 }
 
-bool USlaneFunctionLibrary::AnimationNotify(APaperCharacter* PaperCharacter, UPaperFlipbook* Animation, int frame)
+bool USlaneFunctionLibrary::AnimationNotify(UPaperFlipbookComponent* Flipbook, UPaperFlipbook* Animation, int frame)
 {
-	if (PaperCharacter->GetSprite()->GetFlipbook() == Animation && PaperCharacter->GetSprite()->GetPlaybackPositionInFrames() >= frame)
+	if (Flipbook->GetFlipbook() == Animation && Flipbook->GetPlaybackPositionInFrames() >= frame)
 		return true;
 	else
 		return false;
 }
+
+
 

@@ -23,8 +23,6 @@ APlayerCharacter::APlayerCharacter()
 	BouncingOffCorners->SetCollisionProfileName(TEXT("BouncingOffCorners"));
 	BouncingOffCorners->SetupAttachment(RootComponent);
 
-	BouncingOffCorners->OnComponentBeginOverlap.AddDynamic(this, &APlayerCharacter::OnOverlapBegin);
-	BouncingOffCorners->OnComponentEndOverlap.AddDynamic(this, &APlayerCharacter::OnOverlapEnd);
 
 	GetCharacterMovement()->GravityScale = 4.6f;
 	GetCharacterMovement()->MaxWalkSpeed = 900.0f;
@@ -39,6 +37,10 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	BouncingOffCorners->OnComponentBeginOverlap.AddDynamic(this, &APlayerCharacter::OnOverlapBegin);
+	BouncingOffCorners->OnComponentEndOverlap.AddDynamic(this, &APlayerCharacter::OnOverlapEnd);
+
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &APlayerCharacter::TimerHandleTick, 0.016f, true, 0.1f);
 	SpriteParticle->SetLooping(false);
 }
@@ -96,5 +98,5 @@ void APlayerCharacter::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor*
 //Interfaces Implementations
 void APlayerCharacter::ApplyDamage_Implementation(FVector ActorLocation, float Value)
 {
-	
+	ApplyDamageCharacter(ActorLocation, Value); //event called blueprint
 }
